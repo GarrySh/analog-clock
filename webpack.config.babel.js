@@ -2,7 +2,7 @@ import autoprefixer from 'autoprefixer';
 import path from 'path';
 import precss from 'precss';
 import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+// import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 export default () => ({
   entry: {
@@ -11,11 +11,11 @@ export default () => ({
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: '[name].bundle.js',
-    publicPath: '/',
+    publicPath: '/assets/',
   },
   mode: process.env.NODE_ENV || 'development',
   devServer: {
-    contentBase: './dist',
+    contentBase: './public',
     port: 9000,
   },
   module: {
@@ -47,8 +47,5 @@ export default () => ({
       },
     ],
   },
-  plugins: [
-    new webpack.NoEmitOnErrorsPlugin(),
-    new HtmlWebpackPlugin({ template: './public/index.html' }),
-  ],
+  plugins: [new webpack.NoEmitOnErrorsPlugin()],
 });
